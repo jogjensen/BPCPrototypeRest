@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BPCPrototypeRest.Managers;
 using BPCPrototypeRest.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core.Features;
@@ -15,6 +16,7 @@ namespace BPCPrototypeRest.Controllers
 
         #region Temporary static list
         private static int idCount = 1;
+        BookingManager manager = new BookingManager();
 
         private static readonly List<Bookings> bookingsList = new List<Bookings>()
         {
@@ -30,7 +32,7 @@ namespace BPCPrototypeRest.Controllers
         [HttpGet]
         public IEnumerable<Bookings> Get()
         {
-            return bookingsList;
+            return manager.GetAllBookings();
         }
 
         // GET api/<BookingsController>/5
