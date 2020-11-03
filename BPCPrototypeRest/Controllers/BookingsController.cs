@@ -18,13 +18,13 @@ namespace BPCPrototypeRest.Controllers
         private static int idCount = 1;
         BookingManager manager = new BookingManager();
 
-        private static readonly List<Bookings> bookingsList = new List<Bookings>()
-        {
-            new Bookings(idCount++, "Slagelse", "10:00", "12/12/2020", "Roskilde", "12:00", "13/12/2020", "2", "Gravko",
-                "Dyret står til højre for siloen"),
-            new Bookings(idCount++, "Odense", "12:00", "14/12/2020", "Kastrup", "17:00", "14/12/2020","3" , "Skur",
-                "BOX NR 011")
-        };
+        //private static readonly List<Bookings> bookingsList = new List<Bookings>()
+        //{
+        //    new Bookings(idCount++, "Slagelse", "10:00", "12/12/2020", "Roskilde", "12:00", "13/12/2020", "2", "Gravko",
+        //        "Dyret står til højre for siloen"),
+        //    new Bookings(idCount++, "Odense", "12:00", "14/12/2020", "Kastrup", "17:00", "14/12/2020","3" , "Skur",
+        //        "BOX NR 011")
+        //};
 
         #endregion
 
@@ -35,62 +35,63 @@ namespace BPCPrototypeRest.Controllers
             return manager.GetAllBookings();
         }
 
-        // GET api/<BookingsController>/5
-        [HttpGet("{ordNr}")]
-        public Bookings Get(int ordNr)
-        {
-            return bookingsList.Find(o => o.OrdNr == ordNr);
-        }
 
-        // POST api/<BookingsController>
-        [HttpPost]
-        public void Post([FromBody] Bookings value)
-        {
-            value.OrdNr = idCount++;
-            bookingsList.Add(value);
-        }
+        //// GET api/<BookingsController>/5
+        //[HttpGet("{ordNr}")]
+        //public Bookings Get(int ordNr)
+        //{
+        //    return bookingsList.Find(o => o.OrdNr == ordNr);
+        //}
 
-        // PUT api/<BookingsController>/5
-        [HttpPut("{id}")]
-        public int Put(int id, [FromBody] Bookings value)
-        {
-            Bookings bookings = Get(id);
-            if (bookings != null)
-            {
-                bookings.OrdNr = value.OrdNr;
-                bookings.StartAdr = value.StartAdr;
-                bookings.StartTime = value.StartTime;
-                bookings.StartDate = value.StartDate;
+        //// POST api/<BookingsController>
+        //[HttpPost]
+        //public void Post([FromBody] Bookings value)
+        //{
+        //    value.OrdNr = idCount++;
+        //    bookingsList.Add(value);
+        //}
 
-                bookings.EndAdr = value.EndAdr;
-                bookings.EndTime = value.EndTime;
-                bookings.EndDate = value.EndDate;
+        //// PUT api/<BookingsController>/5
+        //[HttpPut("{id}")]
+        //public int Put(int id, [FromBody] Bookings value)
+        //{
+        //    Bookings bookings = Get(id);
+        //    if (bookings != null)
+        //    {
+        //        bookings.OrdNr = value.OrdNr;
+        //        bookings.StartAdr = value.StartAdr;
+        //        bookings.StartTime = value.StartTime;
+        //        bookings.StartDate = value.StartDate;
 
-                bookings.NumberOcn = value.NumberOcn;
-                bookings.TypeOfGoods = value.TypeOfGoods;
-                bookings.Comments = value.Comments;
+        //        bookings.EndAdr = value.EndAdr;
+        //        bookings.EndTime = value.EndTime;
+        //        bookings.EndDate = value.EndDate;
 
-                return 1;
-            }
+        //        bookings.NumberOcn = value.NumberOcn;
+        //        bookings.TypeOfGoods = value.TypeOfGoods;
+        //        bookings.Comments = value.Comments;
 
-            return 0;
-        }
+        //        return 1;
+        //    }
 
-        // DELETE api/<BookingsController>/5
-        [HttpDelete("{id}")]
-        public int Delete(int id)
-        {
-            Bookings bookings = Get(id);
-            if (bookings != null)
-            {
-                BookingsController.bookingsList.Remove(bookings);
-                return 1;
-            }
+        //    return 0;
+        //}
 
-            return 0;
-        }
+        //// DELETE api/<BookingsController>/5
+        //[HttpDelete("{id}")]
+        //public int Delete(int id)
+        //{
+        //    Bookings bookings = Get(id);
+        //    if (bookings != null)
+        //    {
+        //        BookingsController.bookingsList.Remove(bookings);
+        //        return 1;
+        //    }
+
+        //    return 0;
+        //}
 
 
 
-}
+    }
 }
