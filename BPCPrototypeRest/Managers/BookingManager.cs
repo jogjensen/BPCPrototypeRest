@@ -9,8 +9,7 @@ namespace BPCPrototypeRest.Managers
 {
     public class BookingManager
     {
-        private const string connString = "Server=tcp:bpcserver.database.windows.net,1433;Initial Catalog=BPCPrototypeDB;Persist Security Info=False;User ID=bpcadm;Password=Philipersej123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-
+        private const string connString = "Server=tcp:bpcserver.database.windows.net,1433;Initial Catalog=bpcdb;Persist Security Info=False;User ID=bpcadm;Password=Philipersej123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public IList<Bookings> GetAllBookings()
         {
