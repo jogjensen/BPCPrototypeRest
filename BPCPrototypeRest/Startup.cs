@@ -53,7 +53,7 @@ namespace BPCPrototypeRest
             });
 
             app.UseCors(
-                options => options.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()
+                options => options.AllowAnyHeader().AllowAnyOrigin().WithMethods("GET", "PUT")
             );
 
             app.UseSwagger();
