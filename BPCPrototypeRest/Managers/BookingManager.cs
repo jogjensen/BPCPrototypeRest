@@ -11,6 +11,8 @@ namespace BPCPrototypeRest.Managers
     {
         private const string connString = "Server=tcp:bpcserver.database.windows.net,1433;Initial Catalog=bpcdb;Persist Security Info=False;User ID=bpcadm;Password=Philipersej123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
+
+        #region GetAllBookings()
         public IList<Bookings> GetAllBookings()
         {
             List<Bookings> bookingList = new List<Bookings>();
@@ -27,13 +29,12 @@ namespace BPCPrototypeRest.Managers
                         bookingList.Add(ReadNextBooking(reader));
                     }
                 }
-
                 return bookingList;
             }
-
-
         }
+        #endregion
 
+        #region ReadNextBooking()
         private Bookings ReadNextBooking(SqlDataReader reader)
         {
             Bookings booking = new Bookings();
@@ -51,6 +52,34 @@ namespace BPCPrototypeRest.Managers
 
             return booking;
         }
+        #endregion
+
+        #region GetBookingFromOrdNr()
+
+        public Bookings GetBookingFromOdrNr(int bookingOrdnr)
+        {
+            Bookings bookings = new Bookings();
+
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand("Select * from booking where OrdNr = @OrdNr",conn))
+                {
+                    command.Parameters.AddWithValue("@OrdNr", bookingOrdnr);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        bookings = ReadNextBooking(reader);
+                    }
+                }
+
+                return bookings;
+            }
+        }
+
+
+        #endregion
     }
 }
 

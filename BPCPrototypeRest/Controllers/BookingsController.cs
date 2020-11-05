@@ -18,14 +18,6 @@ namespace BPCPrototypeRest.Controllers
         private static int idCount = 1;
         BookingManager manager = new BookingManager();
 
-        //private static readonly List<Bookings> bookingsList = new List<Bookings>()
-        //{
-        //    new Bookings(idCount++, "Slagelse", "10:00", "12/12/2020", "Roskilde", "12:00", "13/12/2020", "2", "Gravko",
-        //        "Dyret står til højre for siloen"),
-        //    new Bookings(idCount++, "Odense", "12:00", "14/12/2020", "Kastrup", "17:00", "14/12/2020","3" , "Skur",
-        //        "BOX NR 011")
-        //};
-
         #endregion
 
         // GET: api/<BookingsController>
@@ -36,12 +28,12 @@ namespace BPCPrototypeRest.Controllers
         }
 
 
-        //// GET api/<BookingsController>/5
-        //[HttpGet("{ordNr}")]
-        //public Bookings Get(int ordNr)
-        //{
-        //    return bookingsList.Find(o => o.OrdNr == ordNr);
-        //}
+        // GET api/<BookingsController>/5
+        [HttpGet("{OrdNr}")]
+        public Bookings Get(int OrdNr)
+        {
+            return manager.GetBookingFromOdrNr(OrdNr);
+        }
 
         //// POST api/<BookingsController>
         //[HttpPost]
