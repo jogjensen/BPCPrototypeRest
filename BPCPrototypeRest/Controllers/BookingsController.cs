@@ -35,13 +35,13 @@ namespace BPCPrototypeRest.Controllers
             return manager.GetBookingFromOdrNr(OrdNr);
         }
 
-        //// POST api/<BookingsController>
-        //[HttpPost]
-        //public void Post([FromBody] Bookings value)
-        //{
-        //    value.OrdNr = idCount++;
-        //    bookingsList.Add(value);
-        //}
+        // POST api/<BookingsController>
+        [HttpPost]
+        public bool Post([FromBody] Bookings value)
+        {
+            //value.OrdNr = idCount++;
+            return manager.CreateBooking(value);
+        }
 
         //// PUT api/<BookingsController>/5
         //[HttpPut("{id}")]
