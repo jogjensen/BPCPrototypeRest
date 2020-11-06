@@ -7,5 +7,6 @@ namespace BPCPrototypeRest.Managers
 {
     public class CustomerManager
     {
+        private int _cvrNumber;
     }
 }
